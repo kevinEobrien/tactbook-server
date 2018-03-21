@@ -4,6 +4,8 @@ const bodyParser= require("body-parser");
 
 const app= express();
 
+const users= require("./api/users");
+
 app.use(bodyParser.json());
 
 app.get("/", (request, response, next) => {
@@ -11,6 +13,8 @@ app.get("/", (request, response, next) => {
     message: "Testing out the tactbook server"
   });
 });
+
+app.use("/api/v1/users", users);
 
 
 app.use((request, response, next) => {
