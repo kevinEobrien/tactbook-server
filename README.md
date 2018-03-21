@@ -18,3 +18,7 @@ npm start
 ```sh
 npm run dev #starts nodemon on port 3000
 ```
+
+## DB Schema
+
+![]()
