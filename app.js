@@ -4,7 +4,7 @@ const bodyParser= require("body-parser");
 
 const app= express();
 
-const relationship= require("./api/relationship");
+const relationship= require("./migrations/api/relationship");
 
 app.use(bodyParser.json());
 
