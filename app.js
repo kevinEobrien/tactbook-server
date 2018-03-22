@@ -4,7 +4,7 @@ const bodyParser= require("body-parser");
 
 const app= express();
 
-const users= require("./api/users");
+const relationship= require("./api/relationship");
 
 app.use(bodyParser.json());
 
@@ -14,7 +14,7 @@ app.get("/", (request, response, next) => {
   });
 });
 
-app.use("/api/v1/users", users);
+app.use("/api/v1/", relationship);
 
 
 app.use((request, response, next) => {
