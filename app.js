@@ -14,7 +14,7 @@ app.get("/", (request, response, next) => {
   });
 });
 
-app.use("/api/v1/", relationship);
+app.use("/api/v1/relationship", relationship);
 
 
 app.use((request, response, next) => {
