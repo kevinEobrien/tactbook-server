@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable("users", (table) => {
+  return knex.schema.createTable("customer", (table) => {
     table.increments();
     table.text("name").notNullable();
     table.text("profileUrl");
@@ -10,5 +10,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists("users");
+  return knex.schema.dropTableIfExists("customer");
 };

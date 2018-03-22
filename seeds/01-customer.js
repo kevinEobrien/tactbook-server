@@ -1,8 +1,8 @@
 
 exports.seed = function   (knex, Promise) {
-  return knex("users").del()
+  return knex("customer").del()
     .then(function () {
-      return knex("users").insert([
+      return knex("customer").insert([
         {
           "id": 1,
           "name": "Kevin O'Brien",
@@ -24,6 +24,6 @@ exports.seed = function   (knex, Promise) {
       ]);
     })
     .then (() => {
-      return knex.raw("ALTER SEQUENCE users_id_seq RESTART WITH 4;");
+      return knex.raw("ALTER SEQUENCE customer_id_seq RESTART WITH 4;");
     });
 };
