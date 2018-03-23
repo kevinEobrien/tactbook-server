@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex("post").del()
+  return knex.raw("TRUNCATE post CASCADE")
     .then(function () {
       // Inserts seed entries
       return knex("post").insert([
