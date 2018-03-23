@@ -1,4 +1,3 @@
-
 exports.seed = function(knex, Promise) {
   return knex("comment").del()
     .then(function () {
@@ -7,12 +6,12 @@ exports.seed = function(knex, Promise) {
           id: 1, 
           "post_id": 1,
           "customer_id": 2,
-          "comment": "I thought I would never see your face again!"
+          "body": "I thought I would never see your face again!"
         },{
           id: 2, 
           "post_id": 1,
           "customer_id": 3,
-          "comment": "Looking good, Sean..."
+          "body": "Looking good, Sean..."
         }
       ]);
     })
