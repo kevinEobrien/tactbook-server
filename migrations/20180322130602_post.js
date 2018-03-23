@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.text("imageUrl1");
     table.text("imageUrl2");
     table.integer("likes");
-    table.intger("markedAbuse");
+    table.integer("markedAbuse");
   });
 };
 
