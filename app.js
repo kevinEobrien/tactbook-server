@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const path= require("path");
 const bodyParser= require("body-parser");
 
@@ -6,6 +7,7 @@ const app= express();
 
 const relationship= require("./migrations/api/relationship");
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (request, response, next) => {
