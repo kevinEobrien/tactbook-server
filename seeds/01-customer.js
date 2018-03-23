@@ -1,6 +1,6 @@
 
 exports.seed = function   (knex, Promise) {
-  return knex("customer").del()
+  return knex.raw("TRUNCATE customer CASCADE")
     .then(function () {
       return knex("customer").insert([
         {
