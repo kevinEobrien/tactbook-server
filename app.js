@@ -69,11 +69,16 @@ app.get("/post/:id", (request, response, next) => {
 app.post("/post", (request, response, next) => {
   queries.createPost(request.body)
     .then((result) => {
-      if (getCategories(result).includes("politics") || getCategories(result).includes("government")){
-        response.status(201).json("I'm sorry, Watson says you are posting content that violates the terms of Tactbook's posting");
-      }else{
-        response.status(201).json("Post successful");
-      }
+      console.log("result is",result);
+      getCategories(result)
+        .then(categories => {
+          console.log(categories);
+          if(categories.includes("politics") || categories.includes("government")){
+            response.status(201).json("I'm sorry, Watson says you are posting content that violates the terms of Tactbook's posting");
+          }else{
+            response.status(201).json("Post successful");
+          }
+        });
     }).catch(next);
 });
 
@@ -138,7 +143,7 @@ app.use((err, request, response, next) => {
 });
 
 function getCategories (post){
-  watson(post.content)
+  return watson(post.content)
     .then(results => {
       let category1 = results.categories[0].label.split("/");
       let category2 = results.categories[1].label.split("/");

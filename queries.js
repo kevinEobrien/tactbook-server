@@ -48,7 +48,7 @@ module.exports = {
   deletePost(id){
     return database("post").delete().where("id", id);
   },
-  updatepost(id, post){
+  updatePost(id, post){
     return database("post").update(post).where("id", id).returning("*").then(record => record[0]);
   }
 };
