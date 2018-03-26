@@ -2,9 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const path= require("path");
 const bodyParser= require("body-parser");
-// const watson= require("./watson.js");
 const queries = require("./queries");
 const app= express();
+const watson= require("./watson");
 
 // const relationship= require("./migrations/api/relationship");
 
@@ -68,8 +68,12 @@ app.get("/post/:id", (request, response, next) => {
     
 app.post("/post", (request, response, next) => {
   queries.createPost(request.body)
-    .then(() => {
-      response.status(201).json("Post successful");
+    .then((result) => {
+      if (getCategories(result).includes("politics") || getCategories(result).includes("government")){
+        response.status(201).json("I'm sorry, Watson says you are posting content that violates the terms of Tactbook's posting");
+      }else{
+        response.status(201).json("Post successful");
+      }
     }).catch(next);
 });
 
@@ -132,5 +136,16 @@ app.use((err, request, response, next) => {
     stack: request.app.get("env") === "development" ? err.stack : {}
   });
 });
+
+function getCategories (post){
+  watson(post.content)
+    .then(results => {
+      let category1 = results.categories[0].label.split("/");
+      let category2 = results.categories[1].label.split("/");
+      let category3 = results.categories[2].label.split("/");
+      let categories = category1.concat(category2, category3);
+      return categories;
+    }).catch(console.error);
+}
 
 module.exports= app;

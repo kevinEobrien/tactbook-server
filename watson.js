@@ -35,3 +35,20 @@ module.exports= activateWatson;
 //   .catch(err => {
 //     console.error("Error:", err);
 //   });
+
+
+
+
+
+// var post= "This is the worst government to ever rule the United States of America. Trump is terrible!";
+// function getCategories (post){
+//   activateWatson(post.content)
+//     .then(results => {
+//       let category1 = results.categories[0].label.split("/");
+//       let category2 = results.categories[1].label.split("/");
+//       let category3 = results.categories[2].label.split("/");
+//       let categories = category1.concat(category2, category3);
+//       return categories;
+//     });
+// }
+// getCategories(post);
