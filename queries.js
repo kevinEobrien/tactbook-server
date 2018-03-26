@@ -37,29 +37,13 @@ module.exports = {
     return database("post").where("id", id).first();
   },
   createPost(post){
-    watson(post.content)
-      .then(results => {
-        let category1 = results.categories[0].label.split("/");
-        let category2 = results.categories[1].label.split("/");
-        let category3 = results.categories[2].label.split("/");
-        let categories = category1.concat(category2, category3);
-        console.log(categories);
-      });
-    //   .then(categories => {
-    //      if (categories.includes("politics") || categories.includes("government")) {
-    //   return "I'm sorry, Watson says you are posting content that violates the terms of Tactbook's posting";
-    //   })
-    // console.log("filter.categories yields "+ filter.categories);
-    // let category1 = filter.categories[0].label.split("/");
-    // let category2 = filter.categories[1].label.split("/");
-    // let category3 = filter.categories[2].label.split("/");
-    // let categories = category1.concat(category2, category3);
-    // console.log(categories);
-    // if (categories.includes("politics") || categories.includes("government")) {
-    //   return "I'm sorry, Watson says you are posting content that violates the terms of Tactbook's posting";
-       
+    // watson(post.content)
+    //   .then(results => {
+    //     let category1 = results.categories[0].label.split("/");
+    //     let category2 = results.categories[1].label.split("/");
+    //     let category3 = results.categories[2].label.split("/");
+    //     let categories = category1.concat(category2, category3);  
     return database("post").insert(post).returning("*").then(record => record[0]);
-    
   },
   deletePost(id){
     return database("post").delete().where("id", id);
