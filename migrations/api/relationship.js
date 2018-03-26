@@ -1,11 +1,11 @@
-const express= require("express");
+// const express= require("express");
 
-const router= express.Router();
+// const router= express.Router();
 
-//all routes will be prepended by /api/v1/relationship
+// //all routes will be prepended by /api/v1/relationship
 
-router.get("/", (request, response) => {
-  response.json([]);
-});
+// router.get("/", (request, response) => {
+//   response.json([]);
+// });
 
-module.exports= router;
+// module.exports= router;
