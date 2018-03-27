@@ -31,18 +31,14 @@ module.exports = {
     return database("relationship").delete().where("id", id);
   },
   listPost(){
-    return database("post");
+    return database("post")
+      .select("post.id as id", "content", "imageUrl1","imageUrl2","name","profileUrl", "likes")
+      .leftJoin("customer", "customer_id", "customer.id");
   },
   readPost(id){
     return database("post").where("id", id).first();
   },
   createPost(post){
-    // watson(post.content)
-    //   .then(results => {
-    //     let category1 = results.categories[0].label.split("/");
-    //     let category2 = results.categories[1].label.split("/");
-    //     let category3 = results.categories[2].label.split("/");
-    //     let categories = category1.concat(category2, category3);  
     return database("post").insert(post).returning("*").then(record => record[0]);
   },
   deletePost(id){
@@ -50,5 +46,17 @@ module.exports = {
   },
   updatePost(id, post){
     return database("post").update(post).where("id", id).returning("*").then(record => record[0]);
+  },
+  updateLikes(id, currentLikes){
+    return database("laughs")
+      .where("id",id)
+      .returning("*")  
+      .update({"likes": (currentLikes+1)})
+      .then(record=> record);
+  },
+  listComment(){
+    return database("comment")
+      .select("comment.id as id", "post_id", "body")
+      .leftJoin("post", "post_id","post.id");
   }
 };
