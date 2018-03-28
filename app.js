@@ -103,6 +103,7 @@ app.get("/post/:id", (request, response, next) => {
 app.post("/post", (request, response, next) => {
   getCategories(request.body)
     .then(categories => {
+      if(!categories) categories= [""];
       console.log(categories);
       if(categories.includes("politics") || categories.includes("government")){
         response.status(201).json("I'm sorry, Watson says you are posting content that violates the terms of Tactbook's posting policy.");
@@ -188,6 +189,7 @@ app.use((err, request, response, next) => {
 function getCategories (post){
   return watson(post.content)
     .then(results => {
+      console.log("THIS BE THE RESULTS", results);
       let category1 = results.categories[0].label.split("/");
       let category2 = results.categories[1].label.split("/");
       let category3 = results.categories[2].label.split("/");
