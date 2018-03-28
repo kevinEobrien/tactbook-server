@@ -33,6 +33,7 @@ module.exports = {
   listPost(){
     return database("post")
       .select("post.id as id", "content", "imageUrl1","imageUrl2","name","profileUrl", "likes")
+      .orderBy("id", "desc")
       .leftJoin("customer", "customer_id", "customer.id");
   },
   readPost(id){
