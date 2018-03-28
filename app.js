@@ -189,7 +189,6 @@ app.use((err, request, response, next) => {
 function getCategories (post){
   return watson(post.content)
     .then(results => {
-      console.log("THIS BE THE RESULTS", results);
       let category1 = results.categories[0].label.split("/");
       let category2 = results.categories[1].label.split("/");
       let category3 = results.categories[2].label.split("/");
