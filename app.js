@@ -137,6 +137,14 @@ app.put ("/post/:id", (request, response, next) => {
     })
     .catch(next);
 });
+app.get("/relationship", (request, response, next) => {
+  queries.listRelationship(request.params.id)
+    .then(post => {
+      post
+        ? response.status(201).json({post})
+        : response.sendStatus(404);
+    }).catch(next);
+});
 
 app.get("/comment", (request, response, next) => {
   queries.listComment().then(post => {

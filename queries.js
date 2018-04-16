@@ -24,9 +24,9 @@ module.exports = {
   readRelationship(id){
     return database("relationship").where("id", id).first();
   },
-  //   createRelationship(customer_id, customer2_id){
-  //     return database("realtionship").insert(customer, customer_2).returning("*").then(record => record[0]);
-  //   },
+  createRelationship(customer_id, customer2_id){
+    return database("realtionship").insert(customer_id, customer2_id).returning("*").then(record => record[0]);
+  },
   deleteRelationship(id){
     return database("relationship").delete().where("id", id);
   },
