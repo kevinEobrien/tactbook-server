@@ -4,6 +4,9 @@
 
 The app is a social network that does not allow political posts. A lot of the magic happens here on the backend where the Watson API's natural language classifier is leveraged to spit back posts with content identified as political. The server side also communicates with Amazon Web Services s3 in order to store images for posts and to provide the frontend with a viewable image url.  The Postgres database includes four tables (diagramed below) in order to store data about users, relationships, posts, and comments.
 
+![](https://s3.amazonaws.com/tactbook/tactbookErrorMessage.png)
+
+
 ## Setup
 
 ```sh
