@@ -28,13 +28,13 @@ function activateWatson (string){
 }
 module.exports= activateWatson;
 
-// activateWatson("This is the worst government to ever rule the United States of America. Trump is terrible!")
-//   .then(results => {
-//     console.log("return value of watson is ", results);
-//   })
-//   .catch(err => {
-//     console.error("Error:", err);
-//   });
+activateWatson("This is the worst government to ever rule the United States of America. Trump is terrible!")
+  .then(results => {
+    console.log("return value of watson is ", results);
+  })
+  .catch(err => {
+    console.error("Error:", err);
+  });
 
 
 

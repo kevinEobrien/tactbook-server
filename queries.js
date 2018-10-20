@@ -18,8 +18,10 @@ module.exports = {
   updateCustomer(id, customer){
     return database("customer").update(customer).where("id", id).returning("*").then(record => record[0]);
   },
-  listRelationship(){
-    return database("relationship");
+  listRelationship(customer_id){
+    return database("customer")
+      .where("customer.id", customer_id)
+      .leftJoin("relationship", "name");
   },
   readRelationship(id){
     return database("relationship").where("id", id).first();

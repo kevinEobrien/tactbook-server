@@ -9,8 +9,9 @@ const watson= require("./watson");
 const multerS3 = require("multer-s3");
 const aws = require("aws-sdk");
 const multer = require("multer");
+var auth = require("./auth");
 
-
+app.use ("/auth", auth);
 app.use(cors());
 app.use(bodyParser.json());
 
